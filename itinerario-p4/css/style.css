@@ -264,6 +264,229 @@ button {
     box-shadow: 0 0 16px var(--primary);
 }
 
+/* OPCIONAL: hero mais largo, aproxima título, botões e texto da borda esquerda.
+   Se o título já está onde você quer, apague este bloco. */
+.hero .hero-content {
+    width: min(94%, 1400px);
+}
+
+/* Mais distância entre o título/subtítulo e o conteúdo abaixo */
+.hero .hero-content > p {
+    margin-bottom: clamp(36px, 7vh, 72px);
+}
+
+/* Hero mais largo: título, botões e texto chegam mais perto da borda esquerda.
+   Quer ainda mais perto? Aumente o 1700px. Quer mais longe? Diminua. */
+.hero .hero-content {
+    width: min(94%, 1700px);
+}
+
+/* Distância entre o título/subtítulo e o conteúdo abaixo */
+.hero .hero-content > p {
+    margin-bottom: clamp(36px, 7vh, 72px);
+}
+
+/* Distância entre o título/subtítulo e o conteúdo abaixo */
+.hero .hero-content > p {
+    margin-bottom: clamp(36px, 7vh, 72px);
+}
+
+/* Distância entre o título/subtítulo e o conteúdo abaixo */
+.hero .hero-content > p {
+    margin-bottom: clamp(36px, 7vh, 72px);
+}
+
+/* OPCIONAL: hero mais largo, aproxima título, botões e texto da borda esquerda.
+   Se o título já está onde você quer, apague este bloco. */
+.hero .hero-content {
+    width: min(94%, 1400px);
+}
+
+/* Mais distância entre o título/subtítulo e o conteúdo abaixo */
+.hero .hero-content > p {
+    margin-bottom: clamp(36px, 7vh, 72px);
+}
+
+/* Layout em duas colunas: botões e texto lado a lado */
+.help-layout {
+    display: flex;
+    align-items: flex-start;            /* topo do texto alinhado com o topo dos botões */
+    justify-content: flex-start;
+    gap: clamp(150px, 3vw, 44px);        /* menor: o texto chega mais perto dos botões */
+}
+
+.need-grid {
+    /* Lado do quadrado: o menor entre 22% da largura e 17% da altura da tela,
+       nunca menor que 84px nem maior que 150px */
+    --lado: clamp(84px, min(22vw, 17vh), 150px);
+
+    /* Espaçamento entre os botões, também proporcional à altura */
+    --espaco: clamp(14px, 3vh, 36px);
+
+    display: grid;
+    grid-template-columns: repeat(3, var(--lado));
+    gap: var(--espaco);
+    justify-content: start;
+    flex-shrink: 0;
+}
+
+/* Quadradinhos com fundo transparente */
+.need-card {
+    aspect-ratio: 1 / 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    padding: 8px;
+    border-radius: 14px;
+    background: transparent;
+    border: 1px solid var(--border);
+    color: var(--text);
+    text-decoration: none;
+    transition:
+        transform 0.25s ease,
+        background 0.25s ease,
+        border-color 0.25s ease;
+}
+
+.need-card:hover,
+.need-card:focus-visible {
+    background: var(--surface-hover);
+    border-color: rgba(167, 139, 250, 0.55);
+    transform: translateY(-3px);
+}
+
+/* O último card: retângulo com a largura das 3 colunas */
+.need-card-wide {
+    grid-column: 1 / -1;
+    aspect-ratio: auto;
+    height: calc(var(--lado) * 0.45);
+    flex-direction: row;
+    gap: 10px;
+    padding: 8px;
+}
+
+/* Emoji e texto acompanham o tamanho do quadrado */
+.need-emoji {
+    font-size: calc(var(--lado) * 0.38);
+    line-height: 1;
+}
+
+.need-card-wide .need-emoji {
+    font-size: calc(var(--lado) * 0.26);
+}
+
+.need-label {
+    font-size: clamp(0.7rem, calc(var(--lado) * 0.1), 0.95rem);
+    font-weight: 600;
+    text-align: center;
+    line-height: 1.15;
+}
+
+/* =========================
+   PAINEL DE TEXTO
+========================= */
+
+.help-info {
+    flex: 1;                             /* ocupa todo o espaço que sobra na direita */
+    max-width: 880px;                    /* bem mais largo: menos linhas */
+    padding-left: clamp(200px, 4vw, 64px);
+    border-left: 1px solid var(--border);
+}
+
+.help-info h3 {
+    margin: 16px 0 22px;                 /* mais respiro em volta do título */
+    font-size: clamp(1.3rem, 2.4vw, 1.9rem);
+    line-height: 1.25;
+    letter-spacing: -0.5px;
+}
+
+.help-info p {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    line-height: 1.8;
+}
+
+/* Passos numerados com o círculo roxo do site */
+.help-steps {
+    list-style: none;
+    counter-reset: passo;
+    margin: 30px 0;
+}
+
+.help-steps li {
+    position: relative;
+    counter-increment: passo;
+    padding-left: 44px;
+    margin-bottom: 22px;                 /* mais espaço entre os passos */
+    color: var(--text-muted);
+    font-size: 0.92rem;
+    line-height: 1.7;
+}
+
+.help-steps li::before {
+    content: counter(passo);
+    position: absolute;
+    left: 0;
+    top: 1px;
+    width: 28px;
+    height: 28px;
+    display: grid;
+    place-items: center;
+    color: var(--primary);
+    background: rgba(167, 139, 250, 0.1);
+    border: 1px solid rgba(167, 139, 250, 0.25);
+    border-radius: 50%;
+    font-size: 0.78rem;
+    font-weight: 700;
+}
+
+/* Título do passo na mesma linha do texto: menos linhas */
+.help-steps strong {
+    display: inline;
+    margin-right: 6px;
+    color: var(--text);
+}
+
+.help-info .help-note {
+    margin-top: 6px;
+    font-size: 0.88rem;
+}
+
+.help-info .help-note strong {
+    color: var(--text);
+}
+
+.help-info .help-emergency {
+    margin-top: 28px;
+    padding: 16px 20px;
+    font-size: 0.82rem;
+    line-height: 1.7;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+}
+
+.help-emergency strong {
+    color: var(--text);
+}
+
+/* Telas menores: texto vai para baixo dos botões */
+@media (max-width: 900px) {
+    .help-layout {
+        flex-direction: column;
+        gap: 32px;
+    }
+
+    .help-info {
+        max-width: none;
+        padding-left: 0;
+        border-left: none;
+        padding-top: 28px;
+        border-top: 1px solid var(--border);
+    }
+}
 
 /* =========================
    SOBRE O PROJETO
